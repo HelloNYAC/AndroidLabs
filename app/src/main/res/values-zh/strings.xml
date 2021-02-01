@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">安卓实验</string>
-    <string name="hello_message">你好，世界!</string>
-    <string name="ButtonText">我是个按钮</string>
+    <string name="app_name">Lab2 我的GUI</string>
+    <string name="my_message">看看我的GUI</string>
+    <string name="checkbox">请选择</string>
+    <string name="ButtonText">请点击这里</string>
+    <string name="switch_1">开关</string>
+    <string name="edt_1">请在此输入</string>
+    <string name="toast_message">更多信息</string>
+    <string name="swc_msg">开关已打开</string>
 </resources>
