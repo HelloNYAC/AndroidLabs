@@ -6,17 +6,20 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="@string/my_message"
         android:textSize='30dp' />
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
     <Button
         android:id="@+id/btn_1"
-        android:layout_width="match_parent"
+        android:layout_width="437dp"
         android:layout_height="match_parent"
+        android:layout_gravity="fill"
         android:layout_weight="1"
         android:background="#FF6D7373"
         android:text="@string/ButtonText" />
@@ -26,23 +29,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:gravity="fill"
         android:text="@string/checkbox"
         />
 </LinearLayout>
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
     <ImageButton
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/flag" />
 
     <Switch
         android:id="@+id/switch_1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="fill"
         android:text="@string/switch_1" />
 </LinearLayout>
 
@@ -52,6 +58,6 @@
         android:text="@string/edt_1"
         android:inputType="textPersonName|textCapSentences"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         />
 </LinearLayout>

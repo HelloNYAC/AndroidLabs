@@ -6,5 +6,6 @@
     <string name="switch_1">Switch On/Off</string>
     <string name="edt_1">Type Here</string>
     <string name="toast_message">Here is more information</string>
-    <string name="swc_msg">The switch is now</string>
+    <string name="swc_msg1">The switch is now on</string>
+    <string name="swc_msg2">The switch is now off</string>
 </resources>
