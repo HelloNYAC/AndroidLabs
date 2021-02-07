@@ -8,4 +8,11 @@
     <string name="toast_message">Here is more information</string>
     <string name="swc_msg1">The switch is now on</string>
     <string name="swc_msg2">The switch is now off</string>
+
+    <string name="app_name3">Andriod Lab3</string>
+    <string name="enter_email">Enter your email address</string>
+    <string name="email_ph">Type email here</string>
+    <string name="enter_pswd">Type your password</string>
+    <string name="login">Login</string>
+
 </resources>

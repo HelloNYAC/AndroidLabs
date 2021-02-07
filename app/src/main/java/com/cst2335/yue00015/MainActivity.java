@@ -13,33 +13,12 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button clickBtn;
-    private Switch switchBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_linear);
+        setContentView(R.layout.activity_main);
 
-        clickBtn = (Button)findViewById(R.id.btn_1);
-        clickBtn.setOnClickListener((v) -> {
-                Toast.makeText(this, getResources().getString(R.string.toast_message), Toast.LENGTH_LONG).show();
-                });
-
-        switchBtn = (Switch)findViewById(R.id.switch_1);
-        switchBtn.setOnCheckedChangeListener((CompoundButton switchBtn, boolean b)-> {
-            if(b == true){
-                Snackbar
-                        .make(switchBtn, getResources().getString(R.string.swc_msg1), Snackbar.LENGTH_SHORT)
-                        .setAction("Undo", click->switchBtn.setChecked(!b))
-                        .show();
-            }else{
-                Snackbar
-                        .make(switchBtn, getResources().getString(R.string.swc_msg2), Snackbar.LENGTH_SHORT)
-                        .setAction("Undo", click->switchBtn.setChecked(!b))
-                        .show();
-            }
-        });
 
     }
 }
