@@ -6,4 +6,12 @@
     <string name="enter_pswd">Type your password</string>
     <string name="login">Login</string>
 
+    <string name="app_profile">Your Profile</string>
+    <string name="name_hd">Your Name</string>
+    <string name="name_ph">Enter your name</string>
+    <string name="email_hd">Your email</string>
+    <string name="email_ph2">Enter your email</string>
+    <string name="pic">Your picture</string>
+    <string name="click">Click the button above to take a picture</string>
+
 </resources>
