@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Lab2 我的GUI</string>
-    <string name="my_message">看看我的GUI</string>
-    <string name="checkbox">请选择</string>
-    <string name="ButtonText">请点击这里</string>
-    <string name="switch_1">开关</string>
-    <string name="edt_1">请在此输入</string>
-    <string name="toast_message">更多信息</string>
-    <string name="swc_msg1">开关已打开</string>
-    <string name="swc_msg2">开关已关闭</string>
-
-    <string name="app_name3">安卓实验3</string>
+    <string name="app_name">安卓实验3</string>
     <string name="enter_email">请输入Email地址</string>
     <string name="email_ph">在这里输入Email</string>
     <string name="enter_pswd">请输入密码</string>
