@@ -12,22 +12,12 @@ import android.widget.ImageButton;
 
 public class ProfileActivity extends AppCompatActivity {
 
-
-    private ImageButton mImageButton = findViewById(R.id.imgBtn);
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Intent nextPage = new Intent(this, MainActivity.class);
-        mImageButton.setOnClickListener(click -> startActivity(nextPage));
     }
 
     private void dispatchTakePictureIntent() {
@@ -37,14 +27,13 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("MissingSuperCall")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        ImageButton mImageButton = findViewById(R.id.imgBtn);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             mImageButton.setImageBitmap(imageBitmap);
         }
     }
-
 }
