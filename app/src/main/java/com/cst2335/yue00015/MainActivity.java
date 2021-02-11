@@ -20,13 +20,10 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
-//    private ImageButton mImageButton = findViewById(R.id.imgBtn);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        getSharedPreferences("name", 20);
         Button loginButton = findViewById(R.id.loginbutton);
         EditText inputEmail = findViewById(R.id.Email_ph);
         EditText inputPasswd = findViewById(R.id.Password_ph);
