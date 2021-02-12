@@ -4,35 +4,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/list_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <Button
-        android:id="@+id/sendbtn"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/send"/>
+        android:text="@string/enter_email" />
 
     <EditText
-        android:id="@+id/typeline"
-        android:layout_width="wrap_content"
+        android:id="@+id/Email_ph"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/type_ph"
-        android:backgroundTint="@color/black"
-        android:layout_weight="3"/>
+        android:ems="10"
+        android:text="@string/email_ph"
+        android:inputType="textEmailAddress"
+        android:singleLine="true"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_pswd" />
+
+    <EditText
+        android:id="@+id/Password_ph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:singleLine="true"/>
 
     <Button
-        android:id="@+id/rcvbtn"
-        android:layout_width="wrap_content"
+        android:id="@+id/loginbutton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/receive"
-        android:layout_weight="1"/>
-</LinearLayout>
-
+        android:text="@string/login" />
 </LinearLayout>
