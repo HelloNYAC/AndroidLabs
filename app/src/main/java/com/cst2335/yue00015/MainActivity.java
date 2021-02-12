@@ -42,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         pref = getSharedPreferences("email", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editEmail = pref.edit();
+        SharedPreferences.Editor editorEmail = pref.edit();
         String emailText = enterEmail.getText().toString();
-        editEmail.putString("email", emailText);
-        editEmail.commit();
+        editorEmail.putString("email", emailText);
+        editorEmail.commit();
     }
 }
 
