@@ -2,15 +2,11 @@ package com.cst2335.yue00015;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -19,7 +15,7 @@ public class ProfileActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     public static final String ACTIVITY_NAME = "PROFILE_ACTIVITY";
     private ImageButton mImageButton;
-    private EditText email;
+    private EditText emailText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +23,12 @@ public class ProfileActivity extends AppCompatActivity {
         Log.e(ACTIVITY_NAME, "In function" + "onCreate");
         setContentView(R.layout.activity_profile);
         mImageButton = findViewById(R.id.imgBtn);
-        email = findViewById(R.id.enter_email);
+        emailText = findViewById(R.id.enter_email);
 
         mImageButton.setOnClickListener(click -> dispatchTakePictureIntent());
 
         Intent fromMain = getIntent();
-        email.setText(fromMain.getStringExtra("email"));
+        emailText.setText(fromMain.getStringExtra("email"));
     }
 
     private void dispatchTakePictureIntent() {
