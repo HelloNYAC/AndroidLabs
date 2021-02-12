@@ -1,57 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/chatbutton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/name_hd" />
-
-    <EditText
-        android:id="@+id/enter_nm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:text="@string/name_hd"
-        android:singleLine="true"/>
-
-    <TextView
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/email_hd" />
-
-    <EditText
-        android:id="@+id/enter_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:singleLine="true"
-        android:text="@string/email_ph2"/>
-
-    <TextView
-        android:id="@+id/pic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/pic" />
-
-
-    <ImageButton
-        android:id="@+id/imgBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/picture_frame">
-    </ImageButton>
-
-
-    <TextView
-        android:id="@+id/click_msg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/click" />
-
+        android:text="@string/go_chat"
+        />
 </LinearLayout>

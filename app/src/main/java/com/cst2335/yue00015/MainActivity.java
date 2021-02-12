@@ -6,48 +6,51 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
-    private SharedPreferences pref;
-    private EditText enterEmail;
-    private Button loginButton;
+    private ArrayList<String> list = new ArrayList<>(Arrays.asList());
+    private MyListAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loginButton = findViewById(R.id.loginbutton);
-        enterEmail = findViewById(R.id.Email_ph);
-        pref = getSharedPreferences("email", Context.MODE_PRIVATE);
-        String emaildef = pref.getString("email", "");
-        enterEmail.setText(emaildef);
-
-        Intent goToProfile = new Intent(MainActivity.this, ProfileActivity.class);
-        loginButton.setOnClickListener(click ->
-        {
-            goToProfile.putExtra("email", enterEmail.getText().toString());
-            startActivity(goToProfile);
-        });
+        ListView myList = findViewById(R.id.list_item);
+        myList.setAdapter(myAdapter);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+    class MyListAdapter extends BaseAdapter {
+        @Override
+        public int getCount() {
+            return list.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return list.get(position);
+        }
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+
     }
 
-    @Override
-
-
-    protected void onPause() {
-        super.onPause();
-        pref = getSharedPreferences("email", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editorEmail = pref.edit();
-        String emailText = enterEmail.getText().toString();
-        editorEmail.putString("email", emailText);
-        editorEmail.commit();
-    }
 }
 
