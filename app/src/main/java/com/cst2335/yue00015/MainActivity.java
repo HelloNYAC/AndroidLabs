@@ -59,7 +59,5 @@ public class MainActivity extends AppCompatActivity {
         editEmail.putString("email", emailText);
         editEmail.commit();
     }
-
-
 }
 
