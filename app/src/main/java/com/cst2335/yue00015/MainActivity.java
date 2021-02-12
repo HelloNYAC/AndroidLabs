@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+
+
     protected void onPause() {
         super.onPause();
         pref = getSharedPreferences("email", Context.MODE_PRIVATE);
