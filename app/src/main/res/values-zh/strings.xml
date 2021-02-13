@@ -6,4 +6,17 @@
     <string name="receive">接收</string>
     <string name="type_ph">在此输入</string>
     <string name="go_chat">去聊天</string>
+
+    <string name="enter_email">请输入Email地址</string>
+    <string name="email_ph">在这里输入Email</string>
+    <string name="enter_pswd">请输入密码</string>
+    <string name="login">登录</string>
+
+    <string name="app_profile">你的资料</string>
+    <string name="name_hd">姓名</string>
+    <string name="name_ph">输入姓名</string>
+    <string name="email_hd">Email地址</string>
+    <string name="email_ph2">输入电子邮箱地址</string>
+    <string name="pic">你的照片</string>
+    <string name="click">点击上面的按钮拍照</string>
 </resources>

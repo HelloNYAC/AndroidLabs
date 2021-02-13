@@ -5,8 +5,8 @@
     android:orientation="vertical">
 
     <ListView
-        android:id="@+id/list_item"
-        android:layout_width="wrap_content"
+        android:id="@+id/thelistview"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <LinearLayout
@@ -14,25 +14,22 @@
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/sendbtn"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="@string/send"/>
 
         <EditText
             android:id="@+id/typeline"
-            android:layout_width="wrap_content"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:text="@string/type_ph"
-            android:backgroundTint="@color/black"
-            android:layout_weight="3"/>
+            android:backgroundTint="@color/black" />
 
         <Button
             android:id="@+id/rcvbtn"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="@string/receive"
-            android:layout_weight="1"/>
+            android:text="@string/receive" />
     </LinearLayout>
 
 </LinearLayout>
