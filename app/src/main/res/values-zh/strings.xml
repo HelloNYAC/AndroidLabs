@@ -6,6 +6,11 @@
     <string name="receive">接收</string>
     <string name="type_ph">在此输入</string>
     <string name="go_chat">去聊天</string>
+    <string name="del_title">确认删除记录吗？</string>
+    <string name="del_msg1">您选的的行号是： </string>
+    <string name="del_msg2">您的数据库编号是： </string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
 
     <string name="enter_email">请输入Email地址</string>
     <string name="email_ph">在这里输入Email</string>

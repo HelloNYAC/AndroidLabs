@@ -1,5 +1,6 @@
 package com.cst2335.yue00015;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -27,22 +28,39 @@ public class ChatRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
 
-        myAdapter = new MyListAdapter();
-        myList = (ListView)findViewById(R.id.thelistview);
+        myAdapter = new ChatRoomActivity.MyListAdapter();
+        myList = (ListView) findViewById(R.id.thelistview);
         myList.setAdapter(myAdapter);
+
+        myList.setOnItemLongClickListener((parent, view, row, id) -> {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setTitle(getResources().getString(R.string.del_title))
+                    .setMessage(getResources().getString(R.string.del_msg1) + row + "\n"
+                            + getResources().getString(R.string.del_msg2) + id )
+                    .setPositiveButton("Yes", (click, arg) -> {
+                        list.remove(row);
+                        myAdapter.notifyDataSetChanged();
+                    })
+                    .setNegativeButton("No", (click, arg) -> {
+                    })
+                    .create().show();
+            return true;
+        });
+
+
 
         EditText typed = findViewById(R.id.typeline);
 
         send = findViewById(R.id.sendbtn);
         send.setOnClickListener(click ->{
-            Message msgSend = new Message(typed.getText().toString(), R.drawable.send, 0);
+            Message msgSend = new Message(typed.getText().toString(), R.drawable.row_send, 0);
             list.add(msgSend);
             myAdapter.notifyDataSetChanged();
         });
 
         receive = findViewById(R.id.rcvbtn);
         receive.setOnClickListener(click ->{
-            Message msgRcv = new Message(typed.getText().toString(), R.drawable.receive, 1);
+            Message msgRcv = new Message(typed.getText().toString(), R.drawable.row_receive, 1);
             list.add(msgRcv);
             myAdapter.notifyDataSetChanged();
         });
@@ -79,12 +97,11 @@ public class ChatRoomActivity extends AppCompatActivity {
         }
 
         @Override
-        public Message getItem(int position) {
+        public Object getItem(int position) {
             return list.get(position);
         }
 
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @Override      public View getView(int position, View convertView, ViewGroup parent) {
             Message msg = (Message) getItem(position);
             int msgLayout = msg.getLayout();
             LayoutInflater inflater = getLayoutInflater();
@@ -95,7 +112,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                     TextView thisRowText = sendView.findViewById(R.id.row_item);
                     ImageView thisRowImage = sendView.findViewById(R.id.row_title);
                     thisRowText.setText(msg.getMsg());
-                    thisRowImage.setImageResource(R.drawable.send);
+                    thisRowImage.setImageResource(R.drawable.row_send);
                     return sendView;
                 }
                 case 1: {
@@ -103,13 +120,14 @@ public class ChatRoomActivity extends AppCompatActivity {
                     TextView thisRowText = rcvView.findViewById(R.id.row_item);
                     ImageView thisRowImage = rcvView.findViewById(R.id.row_title);
                     thisRowText.setText(msg.getMsg());
-                    thisRowImage.setImageResource(R.drawable.receive);
+                    thisRowImage.setImageResource(R.drawable.row_receive);
                     return rcvView;
                 }
                 default:
                     return null;
             }
         }
+
             @Override
             public long getItemId ( int position){
                 return (long) position;
