@@ -34,14 +34,14 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         myList.setOnItemLongClickListener((parent, view, row, id) -> {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setTitle(getResources().getString(R.string.del_title))
-                    .setMessage(getResources().getString(R.string.del_msg1) + row + "\n"
-                            + getResources().getString(R.string.del_msg2) + id )
-                    .setPositiveButton("Yes", (click, arg) -> {
+            alertDialogBuilder.setTitle(getString(R.string.del_title))
+                    .setMessage(getString(R.string.del_msg1) + row + "\n"
+                            + getString(R.string.del_msg2) + id )
+                    .setPositiveButton(getString(R.string.yes), (click, arg) -> {
                         list.remove(row);
                         myAdapter.notifyDataSetChanged();
                     })
-                    .setNegativeButton("No", (click, arg) -> {
+                    .setNegativeButton(getString(R.string.no), (click, arg) -> {
                     })
                     .create().show();
             return true;
