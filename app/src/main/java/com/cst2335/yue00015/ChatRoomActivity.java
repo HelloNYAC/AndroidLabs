@@ -55,7 +55,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         send.setOnClickListener(click ->{
             Message msgSend = new Message(typed.getText().toString(), R.drawable.row_send, 0);
             list.add(msgSend);
-            myAdapter.notifyDataSetChanged();
+
         });
 
         receive = findViewById(R.id.rcvbtn);
@@ -101,7 +101,8 @@ public class ChatRoomActivity extends AppCompatActivity {
             return list.get(position);
         }
 
-        @Override      public View getView(int position, View convertView, ViewGroup parent) {
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
             Message msg = (Message) getItem(position);
             int msgLayout = msg.getLayout();
             LayoutInflater inflater = getLayoutInflater();
@@ -112,7 +113,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                     TextView thisRowText = sendView.findViewById(R.id.row_item);
                     ImageView thisRowImage = sendView.findViewById(R.id.row_title);
                     thisRowText.setText(msg.getMsg());
-                    thisRowImage.setImageResource(R.drawable.row_send);
+                    thisRowImage.setImageResource(msg.getSourceImg());
                     return sendView;
                 }
                 case 1: {
@@ -120,7 +121,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                     TextView thisRowText = rcvView.findViewById(R.id.row_item);
                     ImageView thisRowImage = rcvView.findViewById(R.id.row_title);
                     thisRowText.setText(msg.getMsg());
-                    thisRowImage.setImageResource(R.drawable.row_receive);
+                    thisRowImage.setImageResource(msg.getSourceImg());
                     return rcvView;
                 }
                 default:
