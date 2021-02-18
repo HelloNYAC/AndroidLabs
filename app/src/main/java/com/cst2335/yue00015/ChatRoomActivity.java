@@ -55,7 +55,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         send.setOnClickListener(click ->{
             Message msgSend = new Message(typed.getText().toString(), R.drawable.row_send, 0);
             list.add(msgSend);
-
+            myAdapter.notifyDataSetChanged();
         });
 
         receive = findViewById(R.id.rcvbtn);
