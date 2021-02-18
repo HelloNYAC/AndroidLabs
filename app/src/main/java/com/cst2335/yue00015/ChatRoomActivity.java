@@ -54,6 +54,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         send = findViewById(R.id.sendbtn);
         send.setOnClickListener(click ->{
             Message msgSend = new Message(typed.getText().toString(), R.drawable.row_send, 0);
+            typed.setText("");
             list.add(msgSend);
             myAdapter.notifyDataSetChanged();
         });
@@ -61,6 +62,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         receive = findViewById(R.id.rcvbtn);
         receive.setOnClickListener(click ->{
             Message msgRcv = new Message(typed.getText().toString(), R.drawable.row_receive, 1);
+            typed.setText("");
             list.add(msgRcv);
             myAdapter.notifyDataSetChanged();
         });
