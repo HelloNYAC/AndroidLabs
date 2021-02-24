@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         myList.setAdapter(myAdapter);
 
         loadDataFromDatabase();
+
         send.setOnClickListener(click ->{
             ContentValues newRowValues = new ContentValues();
             newRowValues.put(MyOpener.TEXT_MESSAGE, textMessage);
@@ -54,6 +56,7 @@ public class ChatRoomActivity extends AppCompatActivity {
             typed.setText("");
             Toast.makeText(this, "Inserted item id:"+newId, Toast.LENGTH_LONG).show();
             myAdapter.notifyDataSetChanged();
+
         });
 
         receive.setOnClickListener(click ->{
@@ -69,22 +72,24 @@ public class ChatRoomActivity extends AppCompatActivity {
             myAdapter.notifyDataSetChanged();
         });
 
-        myList.setOnItemLongClickListener((parent, view, row, id) -> {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setTitle(getString(R.string.del_title))
-                    .setMessage(getString(R.string.del_msg1) + row + "\n"
-                            + getString(R.string.del_msg2) + id )
-                    .setPositiveButton(getString(R.string.yes), (click, arg) -> {
-                        messageList.remove(row);
-                        myAdapter.notifyDataSetChanged();
-                    })
-                    .setNegativeButton(getString(R.string.no), (click, arg) -> {
-                    })
-                    .create().show();
-            return true;
-        });
+            myList.setOnItemLongClickListener((parent, view, row, id) -> {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setTitle(getString(R.string.del_title))
+                        .setMessage(getString(R.string.del_msg1) + row + "\n"
+                                + getString(R.string.del_msg2) + id)
+                        .setPositiveButton(getString(R.string.yes), (click, arg) -> {
+                            messageList.remove(row);
+                            db.delete(MyOpener.TABLE_NAME, MyOpener.COL_ID + "= ?",
+                                    new String[] {Long.toString(myAdapter.getItemId(row))});
+                            myAdapter.notifyDataSetChanged();
+                        })
+                        .setNegativeButton(getString(R.string.no), (click, arg) -> {
+                        })
+                        .create().show();
+                return true;
+            });
+        }
 
-    }
 
     private void loadDataFromDatabase()
     {
@@ -92,6 +97,8 @@ public class ChatRoomActivity extends AppCompatActivity {
         db = dbOpener.getWritableDatabase();
         String[] columns = {MyOpener.TEXT_MESSAGE, MyOpener.SEND_TYPE, MyOpener.COL_ID};
         Cursor results = db.query(false, MyOpener.TABLE_NAME, columns, null, null,null, null, null, null);
+
+        printCursor(results, db.getVersion());
 
         int textMessageColumnIndex = results.getColumnIndex(MyOpener.TEXT_MESSAGE);
         int isSentIndex = results.getColumnIndex(MyOpener.SEND_TYPE);
@@ -114,10 +121,12 @@ public class ChatRoomActivity extends AppCompatActivity {
    }
 
     protected void printCursor(Cursor c, int version){
-//        Message m = messageList.remove();
-        System.out.println(db.getVersion());
-        System.out.println(c.getColumnCount());
-        System.out.println(c.getCount());
+        Log.e("Version", Integer.toString(db.getVersion()));
+//        Log.e("Version", Integer.toString(db.getVersion()));
+
+//        Log.v("Column Count", String.valueOf(c.getColumnCount()));
+//        Log.v("Column Names", String.valueOf(c.getColumnNames()));
+//        Log.v("Row Count", c.getString(c.getCount()));
     }
 
     class MyListAdapter extends BaseAdapter {
