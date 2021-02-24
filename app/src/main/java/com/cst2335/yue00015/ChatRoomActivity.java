@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ChatRoomActivity extends AppCompatActivity {
     private ArrayList<Message> messageList = new ArrayList<>();
@@ -51,7 +52,7 @@ public class ChatRoomActivity extends AppCompatActivity {
             newRowValues.put(MyOpener.SEND_TYPE, 0);
             long newId = db.insert(MyOpener.TABLE_NAME, null, newRowValues);
 
-            Message msgSend = new Message(textMessage, true, newId);
+            Message msgSend = new Message(typed.getText().toString(), true, newId);
             messageList.add(msgSend);
             typed.setText("");
             Toast.makeText(this, "Inserted item id:"+newId, Toast.LENGTH_LONG).show();
@@ -64,7 +65,7 @@ public class ChatRoomActivity extends AppCompatActivity {
             newRowValues.put(MyOpener.TEXT_MESSAGE, textMessage);
             newRowValues.put(MyOpener.SEND_TYPE, 1);
             long newId = db.insert(MyOpener.TABLE_NAME, null, newRowValues);
-            Message msgRcv = new Message(textMessage,false, newId);
+            Message msgRcv = new Message(typed.getText().toString(),false, newId);
             messageList.add(msgRcv);
             typed.setText("");
 
@@ -121,12 +122,13 @@ public class ChatRoomActivity extends AppCompatActivity {
    }
 
     protected void printCursor(Cursor c, int version){
+        int columN = c.getColumnCount();
         Log.e("Version", Integer.toString(db.getVersion()));
-//        Log.e("Version", Integer.toString(db.getVersion()));
-
-//        Log.v("Column Count", String.valueOf(c.getColumnCount()));
-//        Log.v("Column Names", String.valueOf(c.getColumnNames()));
-//        Log.v("Row Count", c.getString(c.getCount()));
+        Log.e("Number Columns", Integer.toString(columN));
+        for(int i=0; i< columN; i++){
+            Log.e("Column Name", c.getColumnName(i));
+        }
+        Log.e("Number Rows", Integer.toString(c.getCount()));
     }
 
     class MyListAdapter extends BaseAdapter {
