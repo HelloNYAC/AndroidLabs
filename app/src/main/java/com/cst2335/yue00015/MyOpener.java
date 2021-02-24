@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MyOpener extends SQLiteOpenHelper {
 
     protected final static String DATABASE_NAME = "MESSAGEDB";
-    protected final static int VERSION_NUM = 2;
+    protected final static int VERSION_NUM = 3;
     public final static String TABLE_NAME = "MESSAGE_TABLE";
     public final static String SEND_TYPE = "SEND_TYPE";
     public final static String TEXT_MESSAGE = "TEXT_MESSAGE";
@@ -24,7 +24,7 @@ public class MyOpener extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db)
     {
         db.execSQL("CREATE TABLE " + TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + TEXT_MESSAGE + "text,"
+                + TEXT_MESSAGE + " text,"
                 + SEND_TYPE  + " INTEGER);");
     }
 

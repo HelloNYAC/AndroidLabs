@@ -23,7 +23,6 @@ public class ChatRoomActivity extends AppCompatActivity {
     private ArrayList<Message> messageList = new ArrayList<>();
     private ChatRoomActivity.MyListAdapter myAdapter;
     SQLiteDatabase db;
-    Cursor c;
     private ListView myList;
     private Button send;
     private Button receive;
@@ -35,18 +34,19 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         EditText typed = findViewById(R.id.typeline);
         String textMessage = typed.getText().toString();
+
         send = findViewById(R.id.sendbtn);
         receive = findViewById(R.id.rcvbtn);
         myList = (ListView) findViewById(R.id.thelistview);
 
-        loadDataFromDatabase();
-        myAdapter = new ChatRoomActivity.MyListAdapter();
+        myAdapter = new MyListAdapter();
         myList.setAdapter(myAdapter);
 
+        loadDataFromDatabase();
         send.setOnClickListener(click ->{
             ContentValues newRowValues = new ContentValues();
             newRowValues.put(MyOpener.TEXT_MESSAGE, textMessage);
-            newRowValues.put(MyOpener.SEND_TYPE, 1);
+            newRowValues.put(MyOpener.SEND_TYPE, 0);
             long newId = db.insert(MyOpener.TABLE_NAME, null, newRowValues);
 
             Message msgSend = new Message(textMessage, true, newId);
@@ -59,7 +59,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         receive.setOnClickListener(click ->{
             ContentValues newRowValues = new ContentValues();
             newRowValues.put(MyOpener.TEXT_MESSAGE, textMessage);
-            newRowValues.put(MyOpener.SEND_TYPE, 0);
+            newRowValues.put(MyOpener.SEND_TYPE, 1);
             long newId = db.insert(MyOpener.TABLE_NAME, null, newRowValues);
             Message msgRcv = new Message(textMessage,false, newId);
             messageList.add(msgRcv);
@@ -90,8 +90,8 @@ public class ChatRoomActivity extends AppCompatActivity {
     {
         MyOpener dbOpener = new MyOpener(this);
         db = dbOpener.getWritableDatabase();
-        String [] columns = {MyOpener.COL_ID, MyOpener.TEXT_MESSAGE, MyOpener.SEND_TYPE};
-        Cursor results = db.query(false, MyOpener.TABLE_NAME, columns, null, null, null, null, null, null);
+        String[] columns = {MyOpener.TEXT_MESSAGE, MyOpener.SEND_TYPE, MyOpener.COL_ID};
+        Cursor results = db.query(false, MyOpener.TABLE_NAME, columns, null, null,null, null, null, null);
 
         int textMessageColumnIndex = results.getColumnIndex(MyOpener.TEXT_MESSAGE);
         int isSentIndex = results.getColumnIndex(MyOpener.SEND_TYPE);
