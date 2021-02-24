@@ -121,15 +121,22 @@ public class ChatRoomActivity extends AppCompatActivity {
         }
    }
 
-    protected void printCursor(Cursor c, int version){
-        int columN = c.getColumnCount();
+    public void printCursor(Cursor c, int version){
         Log.e("Version", Integer.toString(db.getVersion()));
-        Log.e("Number Columns", Integer.toString(columN));
-        for(int i=0; i< columN; i++){
-            Log.e("Column Name", c.getColumnName(i));
+        Log.e("Count of Columns", Integer.toString(c.getColumnCount()));
+        String[] columnNames = c.getColumnNames();
+        Log.e("Column Names", Arrays.deepToString(columnNames));
+        Log.e("Count of Row", Integer.toString(c.getCount()));
+        c.moveToFirst();
+        for(int i=1; i < c.getCount(); i++){
+            Log.e("row", Integer.toString(i)
+                    + ";  message  " + c.getString(c.getColumnIndex(MyOpener.TEXT_MESSAGE))
+                    + ";  isSend:  " + Integer.toString(c.getInt(c.getColumnIndex(MyOpener.SEND_TYPE)))
+                    + ";  _id: " + Integer.toString(c.getInt(c.getColumnIndex(MyOpener.COL_ID))));
+            c.moveToNext();
         }
-        Log.e("Number Rows", Integer.toString(c.getCount()));
-    }
+            c.moveToPosition(-1);
+        }
 
     class MyListAdapter extends BaseAdapter {
         @Override
