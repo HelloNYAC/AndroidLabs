@@ -48,7 +48,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         send.setOnClickListener(click ->{
             ContentValues newRowValues = new ContentValues();
-            newRowValues.put(MyOpener.TEXT_MESSAGE, textMessage);
+            newRowValues.put(MyOpener.TEXT_MESSAGE, typed.getText().toString());
             newRowValues.put(MyOpener.SEND_TYPE, 0);
             long newId = db.insert(MyOpener.TABLE_NAME, null, newRowValues);
 
@@ -62,7 +62,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         receive.setOnClickListener(click ->{
             ContentValues newRowValues = new ContentValues();
-            newRowValues.put(MyOpener.TEXT_MESSAGE, textMessage);
+            newRowValues.put(MyOpener.TEXT_MESSAGE, typed.getText().toString());
             newRowValues.put(MyOpener.SEND_TYPE, 1);
             long newId = db.insert(MyOpener.TABLE_NAME, null, newRowValues);
             Message msgRcv = new Message(typed.getText().toString(),false, newId);
