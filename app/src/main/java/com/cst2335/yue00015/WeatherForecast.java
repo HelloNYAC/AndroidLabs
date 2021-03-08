@@ -123,10 +123,9 @@ public class WeatherForecast extends AppCompatActivity {
                                 connection.connect();
                                 int responseCode = connection.getResponseCode();
                                 if (responseCode == 200) {
-                                    InputStream is = connection.getInputStream();
-                                    iconWeather = BitmapFactory.decodeStream(is);
+                                    InputStream inputStream = connection.getInputStream();
+                                    iconWeather = BitmapFactory.decodeStream(inputStream);
                                 }
-                                File file = new File(iconName + ".png");
                                 FileOutputStream outputStream = openFileOutput(iconName + ".png", Context.MODE_PRIVATE);
                                 //OutputStream outputStream = new FileOutputStream(file);
 
@@ -147,9 +146,9 @@ public class WeatherForecast extends AppCompatActivity {
 
                 HttpURLConnection uvUrlConnection = (HttpURLConnection) url2.openConnection();
 
-                InputStream inStream2 = uvUrlConnection.getInputStream();
+                InputStream inputStream2 = uvUrlConnection.getInputStream();
                 //Set up the XML parser:
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inStream2,
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream2,
                         "UTF-8"), 8);
                 StringBuilder sb = new StringBuilder();
 
@@ -168,9 +167,9 @@ public class WeatherForecast extends AppCompatActivity {
             } catch (IOException ioe) {
                 ex = "IO Exception. Wifi connected?";
             } catch (XmlPullParserException pe) {
-                ex = "XML Pull exception. XML is not properly formed";
+                ex = "XML Pull exception";
             } catch (JSONException JSONeX) {
-                ex = "Json Exception. Json is not properly formed";
+                ex = "Json is not properly formed";
             }
             //What is returned here will be passed as a parameter to onPostExecute:
             return ex;
@@ -184,7 +183,9 @@ public class WeatherForecast extends AppCompatActivity {
                 LoadProgress.setVisibility(View.VISIBLE);
                 LoadProgress.setProgress(values[0]);
                 Thread.sleep(1000);
-            }catch (Exception e) {}
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
