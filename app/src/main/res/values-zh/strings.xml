@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">安卓实验5</string>
+    <string name="app_name">安卓实验6</string>
     <string name="chat_app_name">Chat Room</string>
     <string name="send">发送</string>
     <string name="receive">接收</string>
     <string name="type_ph">在此输入</string>
     <string name="go_chat">去聊天</string>
+    <string name="ck_weather">看看天气</string>
     <string name="del_title">确认删除记录吗？</string>
     <string name="del_msg1">您选的的行号是： </string>
     <string name="del_msg2">您的数据库编号是： </string>

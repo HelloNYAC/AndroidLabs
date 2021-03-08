@@ -8,18 +8,21 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLabs">
-        <activity android:name=".MyOpener"></activity>
+        <activity android:name=".WeatherForecast"></activity>
+        <activity android:name=".MyOpener" />
         <activity
             android:name=".ProfileActivity"
-            android:label="@string/app_profile"></activity>
+            android:label="@string/app_profile" />
         <activity
             android:name=".ChatRoomActivity"
             android:label="@string/chat_app_name" />

@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,6 +38,12 @@ public class ProfileActivity extends AppCompatActivity {
         Intent GoToChat = new Intent(ProfileActivity.this, ChatRoomActivity.class);
         chat.setOnClickListener(click -> {
             startActivity(GoToChat);
+        });
+
+        Button weather = findViewById(R.id.weatherButton);
+        Intent CheckWeather = new Intent(ProfileActivity.this, WeatherForecast.class);
+        weather.setOnClickListener(click -> {
+            startActivity(CheckWeather);
         });
 
         mImageButton = findViewById(R.id.imgBtn);
