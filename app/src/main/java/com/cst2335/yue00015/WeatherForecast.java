@@ -193,9 +193,9 @@ public class WeatherForecast extends AppCompatActivity {
             super.onPostExecute(sentFromDoInBackground);
             //update GUI Stuff:
             curr_temp.setText("Current Temperature is : " + ctemp);
-            min_temp.setText("Minimum Temperature is :" + mintemp);
-            max_temp.setText("Maximum Temperature is :" + mtemp);
-            uv_rating.setText("UV Rating is :" + uvrt);
+            min_temp.setText("Minimum Temperature is : " + mintemp);
+            max_temp.setText("Maximum Temperature is : " + mtemp);
+            uv_rating.setText("UV Rating is : " + uvrt);
             curr_weather.setImageBitmap(iconWeather);
             LoadProgress.setVisibility(View.INVISIBLE);
         }
