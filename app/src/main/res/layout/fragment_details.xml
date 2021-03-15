@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailsFragment"
+    android:id="@+id/fragmentLocation">
+
+    <TextView
+        android:id="@+id/frag_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_msg"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/frag_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_id"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/frag_msg"
+        android:textSize="15dp"/>
+
+    <CheckBox
+        android:id="@+id/frag_ckbx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_ckbx"
+        android:layout_below="@+id/frag_id"/>
+
+    <Button
+        android:id="@+id/frag_hdbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/fragment_hide"
+        />
+
+</RelativeLayout>

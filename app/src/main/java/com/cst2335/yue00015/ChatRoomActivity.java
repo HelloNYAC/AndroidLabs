@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -28,11 +29,16 @@ public class ChatRoomActivity extends AppCompatActivity {
     private ListView myList;
     private Button send;
     private Button receive;
+    public static final String ITEM_SELECTED = "ITEM";
+    public static final String ITEM_POSITION = "POSITION";
+    public static final String ITEM_ID = "ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
+
+        boolean isTablet = findViewById(R.id.fragmentLocation) != null;
 
         EditText typed = findViewById(R.id.typeline);
         String textMessage = typed.getText().toString();
@@ -73,22 +79,49 @@ public class ChatRoomActivity extends AppCompatActivity {
             myAdapter.notifyDataSetChanged();
         });
 
-            myList.setOnItemLongClickListener((parent, view, row, id) -> {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-                alertDialogBuilder.setTitle(getString(R.string.del_title))
-                        .setMessage(getString(R.string.del_msg1) + row + "\n"
-                                + getString(R.string.del_msg2) + id)
-                        .setPositiveButton(getString(R.string.yes), (click, arg) -> {
-                            messageList.remove(row);
-                            db.delete(MyOpener.TABLE_NAME, MyOpener.COL_ID + "= ?",
-                                    new String[] {Long.toString(myAdapter.getItemId(row))});
-                            myAdapter.notifyDataSetChanged();
-                        })
-                        .setNegativeButton(getString(R.string.no), (click, arg) -> {
-                        })
-                        .create().show();
-                return true;
-            });
+        DetailsFragment dFragment = new DetailsFragment();
+        myList.setOnItemClickListener((parent, view, row, id) -> {
+            Bundle dataToPass = new Bundle();
+            dataToPass.putString(ITEM_SELECTED, messageList.get(row).getMsg());
+            dataToPass.putLong(ITEM_ID, id);
+            dataToPass.putBoolean(ITEM_POSITION, messageList.get(row).getIsSend());
+
+            if(isTablet)
+            {
+                 //add a DetailFragment
+                dFragment.setArguments( dataToPass ); //pass it a bundle for information
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentLocation, dFragment) //Add the fragment in FrameLayout
+                        .addToBackStack(null)
+                        .commit(); //actually load the fragment. Calls onCreate() in DetailFragment
+            }
+            else //isPhone
+            {
+                Intent nextActivity = new Intent(ChatRoomActivity.this, EmptyActivity.class);
+                nextActivity.putExtras(dataToPass); //send data to next activity
+                startActivity(nextActivity); //make the transition
+            }
+        });
+
+        myList.setOnItemLongClickListener((parent, view, row, id) -> {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setTitle(getString(R.string.del_title))
+                    .setMessage(getString(R.string.del_msg1) + row + "\n"
+                            + getString(R.string.del_msg2) + id)
+                    .setPositiveButton(getString(R.string.yes), (click, arg) -> {
+                        messageList.remove(row);
+                        db.delete(MyOpener.TABLE_NAME, MyOpener.COL_ID + "= ?",
+                                new String[] {Long.toString(myAdapter.getItemId(row))});
+//                        remove(R.id.fragmentLocation);
+                        myAdapter.notifyDataSetChanged();
+                    })
+                    .setNegativeButton(getString(R.string.no), (click, arg) -> {
+                    })
+                    .create().show();
+            return true;
+        });
+
         }
 
 

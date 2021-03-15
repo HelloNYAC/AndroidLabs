@@ -25,4 +25,10 @@
     <string name="email_ph2">输入电子邮箱地址</string>
     <string name="pic">你的照片</string>
     <string name="click">点击上面的按钮拍照</string>
+
+    <string name="fragment_msg">信息在此显示</string>
+    <string name="fragment_id">ID=</string>
+    <string name="fragment_ckbx">是个发送的信息</string>
+    <string name="fragment_hide">隐藏</string>
+
 </resources>

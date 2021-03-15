@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<RelativeLayout
+    android:id="@+id/listvnbtn"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/thelistview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/sendbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/send"
+        android:layout_below="@id/thelistview"/>
+
+    <EditText
+        android:id="@+id/typeline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="@string/type_ph"
+        android:layout_below="@id/thelistview"
+        android:layout_toRightOf="@id/sendbtn"/>
+
+    <Button
+        android:id="@+id/rcvbtn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/receive"
+        android:textSize="9dp"
+        android:layout_below="@+id/thelistview"
+        android:layout_toRightOf="@id/typeline"/>
+
+</RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fragmentLocation"
+        android:layout_toRightOf="@id/listvnbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#7FB584F1" />
+
+</RelativeLayout>
