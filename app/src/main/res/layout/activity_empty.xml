@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".EmptyActivity"
     android:id="@+id/fragmentLocation"
-    android:layout_toRightOf="@id/listvnbtn"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#7FB584F1"

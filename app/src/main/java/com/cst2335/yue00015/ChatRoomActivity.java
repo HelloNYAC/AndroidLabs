@@ -38,8 +38,6 @@ public class ChatRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
 
-        boolean isTablet = findViewById(R.id.fragmentLocation) != null;
-
         EditText typed = findViewById(R.id.typeline);
         String textMessage = typed.getText().toString();
 
@@ -79,7 +77,9 @@ public class ChatRoomActivity extends AppCompatActivity {
             myAdapter.notifyDataSetChanged();
         });
 
-        DetailsFragment dFragment = new DetailsFragment();
+        boolean isTablet = findViewById(R.id.fragmentLocation) != null;
+
+
         myList.setOnItemClickListener((parent, view, row, id) -> {
             Bundle dataToPass = new Bundle();
             dataToPass.putString(ITEM_SELECTED, messageList.get(row).getMsg());
@@ -89,10 +89,11 @@ public class ChatRoomActivity extends AppCompatActivity {
             if(isTablet)
             {
                  //add a DetailFragment
+                DetailsFragment dFragment = new DetailsFragment();
                 dFragment.setArguments( dataToPass ); //pass it a bundle for information
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.fragmentLocation, dFragment) //Add the fragment in FrameLayout
+                        .replace(R.id.fragmentLocation, dFragment,Long.toString(id)) //Add the fragment in FrameLayout
                         .addToBackStack(null)
                         .commit(); //actually load the fragment. Calls onCreate() in DetailFragment
             }
@@ -111,9 +112,14 @@ public class ChatRoomActivity extends AppCompatActivity {
                             + getString(R.string.del_msg2) + id)
                     .setPositiveButton(getString(R.string.yes), (click, arg) -> {
                         messageList.remove(row);
+                        if(isTablet){
+                            getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .remove(getSupportFragmentManager().findFragmentByTag(Long.toString(id)))
+                                    .commit();
+                        }
                         db.delete(MyOpener.TABLE_NAME, MyOpener.COL_ID + "= ?",
                                 new String[] {Long.toString(myAdapter.getItemId(row))});
-//                        remove(R.id.fragmentLocation);
                         myAdapter.notifyDataSetChanged();
                     })
                     .setNegativeButton(getString(R.string.no), (click, arg) -> {
