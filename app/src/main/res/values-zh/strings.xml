@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">安卓实验6</string>
+    <string name="app_name">安卓实验7</string>
     <string name="chat_app_name">Chat Room</string>
     <string name="send">发送</string>
     <string name="receive">接收</string>
