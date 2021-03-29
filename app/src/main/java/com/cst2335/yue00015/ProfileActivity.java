@@ -46,6 +46,12 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(CheckWeather);
         });
 
+        Button toolbar = findViewById(R.id.toolbarBtn);
+        Intent checkToolbar = new Intent(ProfileActivity.this, TestToolbar.class);
+        toolbar.setOnClickListener(click -> {
+            startActivity(checkToolbar);
+        });
+
         mImageButton = findViewById(R.id.imgBtn);
         emailText = findViewById(R.id.enter_email);
         mImageButton.setOnClickListener(click -> dispatchTakePictureIntent());

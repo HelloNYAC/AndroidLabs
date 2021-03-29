@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cst2335.yue00015" >
+    package="com.cst2335.yue00015">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -18,9 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidLabs"
-        android:usesCleartextTraffic="true" >
-        <activity android:name=".EmptyActivity" >
-        </activity>
+        android:usesCleartextTraffic="true">
+        <activity android:name=".TestToolbar"></activity>
+        <activity android:name=".EmptyActivity"></activity>
         <activity android:name=".WeatherForecast" />
         <activity android:name=".MyOpener" />
         <activity
@@ -29,7 +29,7 @@
         <activity
             android:name=".ChatRoomActivity"
             android:label="@string/chat_app_name" />
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

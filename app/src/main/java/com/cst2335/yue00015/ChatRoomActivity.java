@@ -81,26 +81,26 @@ public class ChatRoomActivity extends AppCompatActivity {
 
 
         myList.setOnItemClickListener((parent, view, row, id) -> {
-            Bundle dataToPass = new Bundle();
-            dataToPass.putString(ITEM_SELECTED, messageList.get(row).getMsg());
-            dataToPass.putLong(ITEM_ID, id);
-            dataToPass.putBoolean(ITEM_POSITION, messageList.get(row).getIsSend());
+            Bundle tg_dataToPass = new Bundle();
+            tg_dataToPass.putString(ITEM_SELECTED, messageList.get(row).getMsg());
+            tg_dataToPass.putLong(ITEM_ID, id);
+            tg_dataToPass.putBoolean(ITEM_POSITION, messageList.get(row).getIsSend());
 
             if(isTablet)
             {
                  //add a DetailFragment
-                DetailsFragment dFragment = new DetailsFragment();
-                dFragment.setArguments( dataToPass ); //pass it a bundle for information
+                DetailsFragment tg_dFragment = new DetailsFragment();
+                tg_dFragment.setArguments( tg_dataToPass ); //pass it a bundle for information
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.fragmentLocation, dFragment,Long.toString(id)) //Add the fragment in FrameLayout
+                        .replace(R.id.fragmentLocation, tg_dFragment,Long.toString(id)) //Add the fragment in FrameLayout
                         .addToBackStack(null)
                         .commit(); //actually load the fragment. Calls onCreate() in DetailFragment
             }
             else //isPhone
             {
                 Intent nextActivity = new Intent(ChatRoomActivity.this, EmptyActivity.class);
-                nextActivity.putExtras(dataToPass); //send data to next activity
+                nextActivity.putExtras(tg_dataToPass); //send data to next activity
                 startActivity(nextActivity); //make the transition
             }
         });

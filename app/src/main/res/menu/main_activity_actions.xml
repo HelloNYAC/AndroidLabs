@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/item1"
+        android:title="@string/red"
+        android:icon="@drawable/red"
+        android:orderInCategory="0"
+        app:showAsAction="always"/>  <!-- This uses showAsAction=always, so look at icon= parameter -->
+
+    <item android:id="@+id/item2"
+        android:icon="@drawable/orange"
+        android:title="@string/orange"
+        app:showAsAction="never"
+        android:orderInCategory="50"/> <!-- This uses showAsAction=never, so look at title= parameter -->
+
+    <item android:id="@+id/item3"
+        android:icon="@drawable/green"
+        android:title="@string/green"
+        app:showAsAction="never"
+        android:orderInCategory="70"/> <!-- This uses showAsAction=never, so look at title= parameter -->
+
+
+    <item android:id="@+id/item4"
+        android:icon="@drawable/green"
+        app:showAsAction="always|collapseActionView"
+        android:title="@string/green"
+        android:orderInCategory="400"/>    <!-- This uses showAsAction=always, so look at icon= parameter -->
+
+</menu>

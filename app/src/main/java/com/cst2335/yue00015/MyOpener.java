@@ -8,9 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyOpener extends SQLiteOpenHelper {
 
-    protected final static String DATABASE_NAME = "MESSAGEDB";
+    protected final static String DATABASE_NAME = "TRIVIA_HISTORY_DB";
     protected final static int VERSION_NUM = 3;
-    public final static String TABLE_NAME = "MESSAGE_TABLE";
+    public final static String TABLE_NAME = "RECORD_TABLE";
     public final static String SEND_TYPE = "SEND_TYPE";
     public final static String TEXT_MESSAGE = "TEXT_MESSAGE";
     public final static String COL_ID = "_id";
