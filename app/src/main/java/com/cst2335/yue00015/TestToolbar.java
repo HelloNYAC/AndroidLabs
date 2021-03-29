@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class TestToolbar extends AppCompatActivity {
+public class TestToolbar extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,9 @@ public class TestToolbar extends AppCompatActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
+
+        BottomNavigationView bnv = findViewById(R.id.bnv);
+        bnv.setOnNavigationItemSelectedListener((BottomNavigationView.OnNavigationItemSelectedListener) this);
 
     }
 
@@ -72,8 +75,6 @@ public class TestToolbar extends AppCompatActivity {
 
     public boolean onNavigationItemSelected( MenuItem item) {
 
-        String message = null;
-
         switch(item.getItemId())
         {
             case R.id.item1:
@@ -86,6 +87,8 @@ public class TestToolbar extends AppCompatActivity {
                 Intent intent = new Intent();
                 TestToolbar.this.setResult(500, intent);
                 TestToolbar.this.finish();
+                break;
+            case R.id.item4:
                 break;
         }
 

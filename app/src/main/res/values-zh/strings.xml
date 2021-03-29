@@ -32,10 +32,9 @@
     <string name="fragment_hide">隐藏</string>
     <string name="toolbar">工具栏</string>
 
-    <string name="red">红</string>
+    <string name="chat">聊天</string>
     <string name="overflow">您点击了overflow</string>
-    <string name="green">绿</string>
-    <string name="orange">橙</string>
+    <string name="weather">天气</string>
     <string name="back">返回</string>
     <string name="open">开</string>
     <string name="close">关</string>

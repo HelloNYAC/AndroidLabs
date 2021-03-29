@@ -32,10 +32,9 @@
     <string name="fragment_ckbx">Is a Send Message</string>
     <string name="fragment_hide">Hide</string>
     <string name="toolbar">Go to Toolbar page</string>
-    <string name="red">Red</string>
     <string name="overflow">You clicked on the overflow menu</string>
-    <string name="green">Green</string>
-    <string name="orange">Orange</string>
+    <string name="chat">Chat</string>
+    <string name="weather">Weather</string>
     <string name="back">Go Back</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
