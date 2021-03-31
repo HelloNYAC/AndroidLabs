@@ -7,6 +7,14 @@
     tools:context=".TestToolbar"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is my Lab 8 "
+        android:layout_centerInParent="true"
+        android:textSize="40dp"
+        android:textColor="#8BBD1F14"/>
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
