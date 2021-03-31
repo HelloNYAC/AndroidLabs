@@ -1,5 +1,6 @@
 package com.cst2335.yue00015;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,7 +18,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class TestToolbar extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener{
+public class TestToolbar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +35,10 @@ public class TestToolbar extends AppCompatActivity  implements NavigationView.On
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
+        navigationView.setNavigationItemSelectedListener(this);
 
         BottomNavigationView bnv = findViewById(R.id.bnv);
-        bnv.setOnNavigationItemSelectedListener((BottomNavigationView.OnNavigationItemSelectedListener) this);
-
+        bnv.setOnNavigationItemSelectedListener(this);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -49,20 +49,25 @@ public class TestToolbar extends AppCompatActivity  implements NavigationView.On
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         String message = null;
         //Look at your menu XML file. Put a case for every id in that file:
         switch(item.getItemId())
         {
             //what to do when the menu item is selected:
-            case R.id.item1:
-                message = "You clicked item 1";
+            case R.id.chat:
+                message = "Going to Chatroom";
+                startActivity(new Intent(this, ChatRoomActivity.class));
                 break;
-            case R.id.item2:
-                message = "You clicked item 2";
+            case R.id.weather:
+                message = "Going to Weather Check";
+                startActivity(new Intent(this, WeatherForecast.class));
                 break;
-            case R.id.item3:
-                message = "You clicked item 3";
+            case R.id.back:
+                message = "Going to login page";
+                Intent intent = new Intent();
+                TestToolbar.this.setResult(500, intent);
+                TestToolbar.this.finish();
                 break;
             case R.id.item4:
                 message = getResources().getString(R.string.overflow);
@@ -72,28 +77,30 @@ public class TestToolbar extends AppCompatActivity  implements NavigationView.On
         return true;
     }
 
-
-    public boolean onNavigationItemSelected( MenuItem item) {
-
+    @Override
+    public boolean onNavigationItemSelected( @NonNull MenuItem item) {
+        String message = null;
         switch(item.getItemId())
         {
-            case R.id.item1:
+            case R.id.chat:
+                message = "Going to Chatroom";
                 startActivity(new Intent(this, ChatRoomActivity.class));
                 break;
-            case R.id.item2:
+            case R.id.weather:
+                message = "Going to Weather Check";
                 startActivity(new Intent(this, WeatherForecast.class));
                 break;
-            case R.id.item3:
+            case R.id.back:
+                message = "Going to login page";
                 Intent intent = new Intent();
                 TestToolbar.this.setResult(500, intent);
                 TestToolbar.this.finish();
-                break;
-            case R.id.item4:
                 break;
         }
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);
+        Toast.makeText(this,"NavigationDrawer"+ message, Toast.LENGTH_LONG).show();
         return false;
     }
 }

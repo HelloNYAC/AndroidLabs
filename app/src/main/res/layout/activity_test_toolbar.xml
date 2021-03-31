@@ -10,28 +10,20 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="#EAC5C5"/>
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/my_toolbar"
         tools:openDrawer="start">
         <!-- THIS IS WHAT IS VISIBLE ON SCREEN:-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/toolbartext"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hello drawer"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -40,7 +32,7 @@
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bnv"
-                android:background="@color/white"
+                android:background="#EAC5C5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:menu="@menu/main_activity_actions"/>
@@ -52,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:background="#EAC5C5"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/header_layout"
             app:menu="@menu/main_activity_actions"

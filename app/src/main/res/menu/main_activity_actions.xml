@@ -2,26 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/item1"
+    <item android:id="@+id/chat"
         android:title="@string/chat"
         android:icon="@drawable/chat"
-        android:orderInCategory="0"
+        android:orderInCategory="50"
         app:showAsAction="always"/>  <!-- This uses showAsAction=always, so look at icon= parameter -->
 
-    <item android:id="@+id/item2"
+    <item android:id="@+id/weather"
         android:icon="@drawable/weather"
         android:title="@string/weather"
         app:showAsAction="always"
         android:orderInCategory="50"/> <!-- This uses showAsAction=never, so look at title= parameter -->
 
-    <item android:id="@+id/item3"
+    <item android:id="@+id/back"
         android:icon="@drawable/back"
         android:title="@string/back"
         app:showAsAction="always"
-        android:orderInCategory="70"/> <!-- This uses showAsAction=never, so look at title= parameter -->
+        android:orderInCategory="50"/> <!-- This uses showAsAction=never, so look at title= parameter -->
 
     <item android:id="@+id/item4"
-        app:showAsAction="always|collapseActionView"
+        app:showAsAction="collapseActionView"
         android:title="@string/overflow"
         android:orderInCategory="400"/>    <!-- This uses showAsAction=always, so look at icon= parameter -->
 
