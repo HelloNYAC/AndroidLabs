@@ -26,6 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageButton mImageButton;
     private EditText emailText;
     private Button chat;
+    public static final int RESULT_TOOLBAR = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,8 @@ public class ProfileActivity extends AppCompatActivity {
         Button toolbar = findViewById(R.id.toolbarBtn);
         Intent checkToolbar = new Intent(ProfileActivity.this, TestToolbar.class);
         toolbar.setOnClickListener(click -> {
-            startActivity(checkToolbar);
+//            startActivity(checkToolbar);
+            startActivityForResult(checkToolbar, RESULT_TOOLBAR);
         });
 
         mImageButton = findViewById(R.id.imgBtn);
@@ -76,6 +78,9 @@ public class ProfileActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             mImageButton.setImageBitmap(imageBitmap);
+        }
+        if (requestCode == RESULT_TOOLBAR && resultCode == 500){
+            ProfileActivity.this.finish();
         }
     }
 

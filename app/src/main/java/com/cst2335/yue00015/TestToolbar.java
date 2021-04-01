@@ -20,6 +20,9 @@ import com.google.android.material.navigation.NavigationView;
 
 public class TestToolbar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener{
 
+    public static final int RESULT_CODE = 500;
+    Intent backToLogin = new Intent();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,8 +68,7 @@ public class TestToolbar extends AppCompatActivity implements NavigationView.OnN
                 break;
             case R.id.back:
                 message = "Going to login page";
-                Intent intent = new Intent();
-                TestToolbar.this.setResult(500, intent);
+                TestToolbar.this.setResult(RESULT_CODE, backToLogin);
                 TestToolbar.this.finish();
                 break;
             case R.id.item4:
@@ -92,8 +94,8 @@ public class TestToolbar extends AppCompatActivity implements NavigationView.OnN
                 break;
             case R.id.back:
                 message = "Going to login page";
-                Intent intent = new Intent();
-                TestToolbar.this.setResult(500, intent);
+//                Intent intent = new Intent();
+                TestToolbar.this.setResult(RESULT_CODE, backToLogin);
                 TestToolbar.this.finish();
                 break;
         }
