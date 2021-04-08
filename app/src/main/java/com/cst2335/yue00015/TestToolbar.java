@@ -59,17 +59,13 @@ public class TestToolbar extends AppCompatActivity implements NavigationView.OnN
         {
             //what to do when the menu item is selected:
             case R.id.chat:
-                message = "Going to Chatroom";
-                startActivity(new Intent(this, ChatRoomActivity.class));
+                message = "You clicked on item 1";
                 break;
             case R.id.weather:
-                message = "Going to Weather Check";
-                startActivity(new Intent(this, WeatherForecast.class));
+                message = "You clicked on item 2";
                 break;
             case R.id.back:
-                message = "Going to login page";
-                TestToolbar.this.setResult(RESULT_CODE, backToLogin);
-                TestToolbar.this.finish();
+                message = "You clicked on item 3";
                 break;
             case R.id.item4:
                 message = getResources().getString(R.string.overflow);
